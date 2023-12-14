@@ -1,6 +1,6 @@
 <h1>{{ $heading }}</h1>
 @if(count($listings) == 0)
-    <p>No listing found</p>
+    <p>No listings found</p>
 @endif
 @foreach ($listings as $listing)
     <h2> {{ $listing['title'] }}</h2>
