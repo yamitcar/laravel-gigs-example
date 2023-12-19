@@ -1,6 +1,4 @@
-@extends('layout')
-
-@section('content')
+<x-layout>
 
     @include('partials._hero')
     @include('partials._search')
@@ -15,12 +13,5 @@
             <x-listing-card :listing="$listing"/>
         @endforeach
     </div>
-    {{--
+</x-layout>
 
-
-            <h2>
-                <a href="/listings/{{$listing['id']}}"> {{ $listing['title'] }}</a>
-            </h2>
-            <p> {{ $listing['description'] }}</p>--}}
-
-@endsection
