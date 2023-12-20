@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ListingController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,11 +23,14 @@ Route::get('/listings/{listing}/edit', [ListingController::class, 'edit']);
 Route::delete('/listings/{listing}', [ListingController::class, 'delete']);
 Route::get('/listings/{listing}', [ListingController::class, 'show']);
 
+Route::get('/register', [UserController::class, 'create']);
+Route::post('/users', [UserController::class, 'store']);
+
+
 Route::get('/hello', function () {
     return response('<h1>Hello world</h1>', 200)
         ->header('Content-type', 'text/plain');
 });
-
 
 Route::get('/posts/{id}', function ($id) {
     return response('Post ' . $id);
@@ -34,5 +38,4 @@ Route::get('/posts/{id}', function ($id) {
 
 Route::get('/search', function (Request $request) {
     return ($request->hello . ' ' . 'world');
-
 });
