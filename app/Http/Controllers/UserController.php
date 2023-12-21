@@ -36,4 +36,26 @@ class UserController extends Controller
         $request->session()->regenerateToken();
         return redirect('/')->with('message', 'Goodbye!');
     }
+
+    public function login()
+    {
+        return view('users.login');
+    }
+
+    public function authenticate()
+    {
+        $formFields = request()->validate([
+            'email'    => ['required', 'email'],
+            'password' => 'required',
+        ]);
+
+        if (auth()->attempt($formFields)) {
+            session()->regenerate();
+            return redirect('/')->with('message', 'Welcome back!');
+        }
+
+        return back()->withErrors([
+            'email' => 'Your provided credentials could not be verified.',
+        ]);
+    }
 }
