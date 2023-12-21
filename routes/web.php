@@ -23,10 +23,10 @@ Route::get('/listings/{listing}/edit', [ListingController::class, 'edit'])->midd
 Route::delete('/listings/{listing}', [ListingController::class, 'delete'])->middleware('auth');
 Route::get('/listings/{listing}', [ListingController::class, 'show']);
 
-Route::get('/register', [UserController::class, 'create'])->middleware('guess');
+Route::get('/register', [UserController::class, 'create'])->middleware('guest');
 Route::post('/users', [UserController::class, 'store']);
 Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
-Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guess');
+Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
 
